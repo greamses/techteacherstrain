@@ -154,7 +154,7 @@
         transition: all 0.3s ease;
         cursor: pointer;
         position: relative;
-        height: 180px;
+        height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -442,3 +442,104 @@
         flex: 1;
         margin: 0;
     }
+    
+    
+    #totalPrice *{
+        color: white;
+    }
+    
+    /* Time Slots Checkbox Styling */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.time-slot:hover {
+    border-color: #200038;
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(32, 0, 56, 0.1);
+}
+
+.time-slot input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.time-slot input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, #200038 0%, #3f0071 100%);
+    border-color: #200038;
+}
+
+.time-slot input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.time-slot input[type="checkbox"]:checked+span {
+    color: #200038;
+    font-weight: 600;
+}
+
+.time-slot:has(input[type="checkbox"]:checked) {
+    border-color: #200038;
+    background: linear-gradient(135deg, rgba(32, 0, 56, 0.05) 0%, rgba(63, 0, 113, 0.05) 100%);
+    box-shadow: 0 4px 15px rgba(32, 0, 56, 0.15);
+}
+
+.time-slot span {
+    line-height: 1.4;
+    font-size: 0.9em;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.time-slot input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(32, 0, 56, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .time-slots {
+        grid-template-columns: 1fr;
+    }
+    
+    .time-slot {
+        padding: 12px;
+    }
+    
+    .time-slot span {
+        font-size: 0.85em;
+    }
+}

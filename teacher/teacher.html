@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Training Registration | Mathetactics Educonsults</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+
+<body>
+  <header class="header">
+    <img src="logo.png" class="logo" alt="my logo">
+    <h1>Teacher Training Registration</h1>
+    <p class="subtitle">Professional Development in Educational Technology</p>
+  </header>
+  
+  <div class="form-container">
+    <form id="registrationForm">
+      <!-- Registration Type -->
+      <div class="form-group">
+        <label>Registration Type</label>
+        <div class="registration-type">
+          <label>
+            <input type="radio" name="registrationType" value="individual" checked>
+            Teacher
+          </label>
+          <label>
+            <input type="radio" name="registrationType" value="school">
+            School
+          </label>
+        </div>
+      </div>
+      
+      <!-- Personal/School Information -->
+      <div class="form-group">
+        <label for="participantName">Name</label>
+        <input type="text" id="participantName" name="participantName" required>
+      </div>
+      
+      <div class="form-group school-info" id="schoolInfo">
+        <label for="schoolName">School Name</label>
+        <input type="text" id="schoolName" name="schoolName">
+        
+        <label for="participantCount" style="margin-top: 10px;">Number of Teachers Participating</label>
+        <input type="number" id="participantCount" name="participantCount" min="1" max="50">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="organization">School/Organization (if applicable)</label>
+        <input type="text" id="organization" name="organization">
+      </div>
+      
+      <!-- Course Selection -->
+      <div class="form-group">
+        <label>Select Training Courses (Multiple Selection Allowed)</label>
+        <div class="course-grid" id="courseGrid">
+          <!-- Courses will be populated by JavaScript -->
+        </div>
+      </div>
+      
+      <!-- Selected Courses Summary -->
+      <div class="selected-courses" id="selectedCoursesDiv" style="display: none;">
+        <h4>Selected Courses:</h4>
+        <ul id="selectedCoursesList"></ul>
+      </div>
+      
+      <!-- Total Price Display -->
+      <div class="total-price" id="totalPrice">
+        See pricing
+      </div>
+      
+      <!-- Payment Information -->
+      <div class="payment-info" id="paymentInfo" style="display: none;">
+        <h3>Payment Information</h3>
+        <p>Please make payment to the account below and keep your receipt for verification:</p>
+        <div class="account-details">
+          <p><strong>Account Name:</strong> Emmanuel Daniel Chima</p>
+          <p><strong>Account Number:</strong> 0772808080</p>
+          <p><strong>Bank:</strong> Access Bank Plc</p>
+        </div>
+        <p><small>After payment, please send proof of payment via WhatsApp (+2348110535447) or email (eemadanyel@gmail.com) for confirmation.</small></p>
+      </div>
+      
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="experience">Teaching Experience (years)</label>
+        <select id="experience" name="experience" required>
+          <option value="">Select experience level</option>
+          <option value="0-2">0-2 years</option>
+          <option value="3-5">3-5 years</option>
+          <option value="6-10">6-10 years</option>
+          <option value="10+">10+ years</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="subjects">Subjects You Teach</label>
+        <input type="text" id="subjects" name="subjects" placeholder="e.g., Mathematics, English, Science">
+      </div>
+      
+      <div class="form-group">
+        <label for="techLevel">Technology Comfort Level</label>
+        <select id="techLevel" name="techLevel" required>
+          <option value="">Select your level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="expectations">What do you hope to achieve from this training?</label>
+        <textarea id="expectations" name="expectations" rows="4" placeholder="Share your learning goals and expectations..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="additionalNotes">Additional Notes</label>
+        <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="Any special requirements or questions?"></textarea>
+      </div>
+      
+      <!-- Status Messages -->
+      <div id="statusMessage"></div>
+      
+      <div class="button-group">
+        <button type="button" id="downloadPdfBtn" class="submitBtn btn" style="display: none;">
+          PDF
+        </button>
+        <button type="submit" id="submitBtn" class="btn">
+          Register
+        </button>
+        <a href="child.html">
+          <button type="button" class="btn">
+            Register a Child
+          </button>
+        </a>
+        
+      </div>
+    </form>
+  </div>
+  <script src="main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,157 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Training Registration | Mathetactics Educonsults</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superbrain Elites - Tutoring Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            color: #200038;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        
+        .header {
+            width: 100%;
+            display: flex;
+            height: 120px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(135deg, #200038 0%, #3f0071 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .header * {
+            color: white;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            margin-bottom: 15px;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .option-card {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .option-content {
+            padding: 25px;
+        }
+        
+        .option-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #200038;
+        }
+        
+        .option-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #200038 0%, #3f0071 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #3f0071 0%, #200038 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(32, 0, 56, 0.15);
+        }
+        
+        .footer {
+            background: #200038;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        .footer * {
+            color: white;
+        }
+        
+        .benefits {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        
+        .benefits h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #200038;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #3f0071;
+        }
+        
+        .benefit-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #200038;
+        }
+        
+        .benefit-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .options-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .option-card {
+                max-width: 100%;
+            }
+            
+            .header {
+                height: auto;
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <header class="header">
-    <img src="logo.png" class="logo" alt="my logo">
-    <h1>Teacher Training Registration</h1>
-    <p class="subtitle">Professional Development in Educational Technology</p>
-  </header>
-  
-  <div class="form-container">
-    <form id="registrationForm">
-      <!-- Registration Type -->
-      <div class="form-group">
-        <label>Registration Type</label>
-        <div class="registration-type">
-          <label>
-            <input type="radio" name="registrationType" value="individual" checked>
-            Teacher
-          </label>
-          <label>
-            <input type="radio" name="registrationType" value="school">
-            School
-          </label>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Superbrain Elites Logo">
         </div>
-      </div>
-      
-      <!-- Personal/School Information -->
-      <div class="form-group">
-        <label for="participantName">Name</label>
-        <input type="text" id="participantName" name="participantName" required>
-      </div>
-      
-      <div class="form-group school-info" id="schoolInfo">
-        <label for="schoolName">School Name</label>
-        <input type="text" id="schoolName" name="schoolName">
+        <h1>Superbrain Elites</h1>
+        <p class="subtitle">Personalized Math & Coding Tutoring Services</p>
+    </header>
+    
+    <main class="main-content">
+        <div class="benefits">
+            <h2>Why Choose Superbrain Elites?</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Personalized Learning</h3>
+                    <p class="benefit-description">Tailored lessons to match each student's learning style and pace for maximum effectiveness.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3 class="benefit-title">Cognitive Development</h3>
+                    <p class="benefit-description">Our methods enhance mental math skills, problem-solving abilities, and logical thinking.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👨‍🏫</div>
+                    <h3 class="benefit-title">Expert Tutors</h3>
+                    <p class="benefit-description">Highly qualified tutors passionate about making math and coding engaging and fun.</p>
+                </div>
+            </div>
+        </div>
         
-        <label for="participantCount" style="margin-top: 10px;">Number of Teachers Participating</label>
-        <input type="number" id="participantCount" name="participantCount" min="1" max="50">
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="organization">School/Organization (if applicable)</label>
-        <input type="text" id="organization" name="organization">
-      </div>
-      
-      <!-- Course Selection -->
-      <div class="form-group">
-        <label>Select Training Courses (Multiple Selection Allowed)</label>
-        <div class="course-grid" id="courseGrid">
-          <!-- Courses will be populated by JavaScript -->
+        <div class="options-container">
+            <div class="option-card">
+                <div class="option-image" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="option-content">
+                    <h2 class="option-title">Student Registration</h2>
+                    <p class="option-description">Register your child for our personalized math and coding tutoring programs. Choose from individual sessions or group classes.</p>
+                    <a href="child-registration.html" class="btn">Register Your Child</a>
+                </div>
+            </div>
+            
+            <div class="option-card">
+                <div class="option-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="option-content">
+                    <h2 class="option-title">Teacher Application</h2>
+                    <p class="option-description">Join our team of passionate educators. We're looking for talented tutors to help shape young minds.</p>
+                    <a href="teacher-registration.html" class="btn">Apply as a Tutor</a>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- Selected Courses Summary -->
-      <div class="selected-courses" id="selectedCoursesDiv" style="display: none;">
-        <h4>Selected Courses:</h4>
-        <ul id="selectedCoursesList"></ul>
-      </div>
-      
-      <!-- Total Price Display -->
-      <div class="total-price" id="totalPrice">
-        See pricing
-      </div>
-      
-      <!-- Payment Information -->
-      <div class="payment-info" id="paymentInfo" style="display: none;">
-        <h3>Payment Information</h3>
-        <p>Please make payment to the account below and keep your receipt for verification:</p>
-        <div class="account-details">
-          <p><strong>Account Name:</strong> Emmanuel Daniel Chima</p>
-          <p><strong>Account Number:</strong> 0772808080</p>
-          <p><strong>Bank:</strong> Access Bank Plc</p>
-        </div>
-        <p><small>After payment, please send proof of payment via WhatsApp (+2348110535447) or email (eemadanyel@gmail.com) for confirmation.</small></p>
-      </div>
-      
-      <!-- Additional Information -->
-      <div class="form-group">
-        <label for="experience">Teaching Experience (years)</label>
-        <select id="experience" name="experience" required>
-          <option value="">Select experience level</option>
-          <option value="0-2">0-2 years</option>
-          <option value="3-5">3-5 years</option>
-          <option value="6-10">6-10 years</option>
-          <option value="10+">10+ years</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="subjects">Subjects You Teach</label>
-        <input type="text" id="subjects" name="subjects" placeholder="e.g., Mathematics, English, Science">
-      </div>
-      
-      <div class="form-group">
-        <label for="techLevel">Technology Comfort Level</label>
-        <select id="techLevel" name="techLevel" required>
-          <option value="">Select your level</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="expectations">What do you hope to achieve from this training?</label>
-        <textarea id="expectations" name="expectations" rows="4" placeholder="Share your learning goals and expectations..."></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label for="additionalNotes">Additional Notes</label>
-        <textarea id="additionalNotes" name="additionalNotes" rows="3" placeholder="Any special requirements or questions?"></textarea>
-      </div>
-      
-      <!-- Status Messages -->
-      <div id="statusMessage"></div>
-      
-      <div class="button-group">
-        <button type="button" id="downloadPdfBtn" class="submitBtn btn" style="display: none;">
-          PDF
-        </button>
-        <button type="submit" id="submitBtn" class="btn">
-          Register
-        </button>
-        <a href="child.html">
-          <button type="button" class="btn">
-            Register a Child
-          </button>
-        </a>
-        
-      </div>
-    </form>
-  </div>
-  <script src="main.js" type="text/javascript" charset="utf-8"></script>
+    </main>
+    
+    <footer class="footer">
+        <p>© 2023 Superbrain Elites. All rights reserved.</p>
+        <p>Contact: +234 811 053 5447 | eemadanyel@gmail.com</p>
+    </footer>
 </body>
-
 </html>

@@ -1,5 +1,4 @@
-// Get current exchange rate (you can update this or make it dynamic)
-const EXCHANGE_RATE = 1550; // 1 USD = 1550 NGN (approximate)
+const EXCHANGE_RATE = 1550; 
 
 function convertToUSD(nairaAmount) {
   return (nairaAmount / EXCHANGE_RATE).toFixed(2);

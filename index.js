@@ -294,7 +294,6 @@ function initializeTestimonialCarousel() {
   });
 }
 
-// Programs Carousel Functionality
 function initializeProgramsCarousel() {
     const slider = document.querySelector('.programs-slider');
     const prevBtn = document.querySelector('.carousel-prev');
@@ -303,7 +302,6 @@ function initializeProgramsCarousel() {
     
     if (!slider) return;
     
-    // Program data with online placeholder images
     const programs = [
         {
             title: "Junior Coders Bootcamp",
@@ -339,7 +337,6 @@ function initializeProgramsCarousel() {
     
     let currentIndex = 0;
     
-    // Create slides
     function createSlides() {
         slider.innerHTML = '';
         programs.forEach((program, index) => {
@@ -371,13 +368,11 @@ function initializeProgramsCarousel() {
         });
     }
     
-    // Helper function to darken colors
     function darkenColor(color, percent) {
         // This is a simplified color darkening function
         return color.replace(/\d+/g, num => Math.max(0, parseInt(num) - percent));
     }
     
-    // Go to specific slide
     function goToSlide(index) {
         currentIndex = index;
         const slideWidth = document.querySelector('.program-slide').offsetWidth + 30;
@@ -388,7 +383,6 @@ function initializeProgramsCarousel() {
         updateDots();
     }
     
-    // Update dot indicators
     function updateDots() {
         const dots = document.querySelectorAll('.carousel-dot');
         dots.forEach((dot, index) => {
@@ -396,23 +390,19 @@ function initializeProgramsCarousel() {
         });
     }
     
-    // Next slide
     function nextSlide() {
         currentIndex = (currentIndex + 1) % programs.length;
         goToSlide(currentIndex);
     }
-    
-    // Previous slide
+  
     function prevSlide() {
         currentIndex = (currentIndex - 1 + programs.length) % programs.length;
         goToSlide(currentIndex);
     }
     
-    // Initialize
     createSlides();
     createDots();
     
-    // Event listeners
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
     
@@ -428,7 +418,6 @@ function initializeProgramsCarousel() {
         autoSlideInterval = setInterval(nextSlide, 5000);
     });
     
-    // Handle window resize
     window.addEventListener('resize', () => {
         goToSlide(currentIndex);
     });

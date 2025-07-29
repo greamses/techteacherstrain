@@ -288,23 +288,24 @@ function initializeProgramsCarousel() {
   
   const programs = [
   {
-    title: "Junior Coders and Robotics World Bootcamp",
-    description: "Introduction to programming for ages 8-12 with Scratch and Python basics. Hands-on robotics projects with LEGO Mindstorms and Arduino.",
+    title: "Robotics World Bootcamp",
+    description: "Intro to programming for ages 8-12. Covers Scratch, Python basics, and hands-on robotics with LEGO Mindstorms.",
     image: "coding.jpg",
     color: "#4facfe55"
   },
   {
-    title: "Creative Math Art",
-    description: "Combine math and art through geometric patterns and fractals.",
+    title: "Creative Math Art Workshop",
+    description: "Blend math and art together through geometric patterns, fractals, and digital design projects.",
     image: "creative.jpg",
     color: "#ff9a9e55"
   },
   {
-    title: "Financial Literacy",
-    description: "Practical money management skills for teens and young adults.",
+    title: "Financial Literacy Program",
+    description: "Essential money management skills for teens, covering budgeting, saving, and smart spending.",
     image: "finance.jpg",
     color: "#5f2c8255"
-  }];
+  }
+];
   
   let currentIndex = 0;
   

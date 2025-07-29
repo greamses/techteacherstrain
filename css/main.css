@@ -410,12 +410,12 @@ header.scrolled {
 .carousel-prev,
 .carousel-next {
   position: absolute;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: white;
+  background: #FFFFFF63;
   border: none;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;

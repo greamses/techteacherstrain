@@ -1,4 +1,5 @@
 import renderNavigation from './js/navigation.js';
+import {getImagePath} from './js/data.js'
 
 window.addEventListener('scroll', function() {
   const header = document.querySelector('header');
@@ -287,34 +288,22 @@ function initializeProgramsCarousel() {
   
   const programs = [
   {
-    title: "Junior Coders Bootcamp",
-    description: "Introduction to programming for ages 8-12 with Scratch and Python basics.",
-    image: "coding.jpeg",
-    color: "#4facfe"
-  },
-  {
-    title: "Math Olympiad Prep",
-    description: "Advanced problem-solving techniques for math competition enthusiasts.",
-    image: "math.jpeg",
-    color: "#f093fb"
-  },
-  {
-    title: "Robotics Workshop",
-    description: "Hands-on robotics projects with LEGO Mindstorms and Arduino.",
-    image: "robotics.jpeg",
-    color: "#43e97b"
+    title: "Junior Coders and Robotics World Bootcamp",
+    description: "Introduction to programming for ages 8-12 with Scratch and Python basics. Hands-on robotics projects with LEGO Mindstorms and Arduino.",
+    image: "coding.jpg",
+    color: "#4facfe55"
   },
   {
     title: "Creative Math Art",
     description: "Combine math and art through geometric patterns and fractals.",
-    image: "creative.jpeg",
-    color: "#ff9a9e"
+    image: "creative.jpg",
+    color: "#ff9a9e55"
   },
   {
     title: "Financial Literacy",
     description: "Practical money management skills for teens and young adults.",
-    image: "finance.jpeg",
-    color: "#5f2c82"
+    image: "finance.jpg",
+    color: "#5f2c8255"
   }];
   
   let currentIndex = 0;
@@ -325,7 +314,7 @@ function initializeProgramsCarousel() {
       const slide = document.createElement('div');
       slide.className = 'program-slide';
       slide.innerHTML = `
-                <div class="program-slide-image" style="background-image: url('${program.image}');">
+                <div class="program-slide-image" style="background-image: url('${getImagePath()}${program.image}');">
                     <div class="image-overlay" style="background: linear-gradient(135deg, ${program.color}80 0%, ${darkenColor(program.color, 20)}80 100%);"></div>
                 </div>
                 <div class="program-slide-content">
@@ -403,6 +392,7 @@ function initializeProgramsCarousel() {
   window.addEventListener('resize', () => {
     goToSlide(currentIndex);
   });
+  console.log(slider)
 }
 
 const setupMobileMenu = () => {
@@ -418,10 +408,8 @@ const setupMobileMenu = () => {
 
 };
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
   initializeTestimonialCarousel()
-  initializeProgramsCarousel();
+  initializeProgramsCarousel()
   setupMobileMenu();
 });

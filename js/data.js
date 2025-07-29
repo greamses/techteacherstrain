@@ -1,4 +1,4 @@
-const getImagePath = () => {
+export const getImagePath = () => {
   return '/src/';
 };
 

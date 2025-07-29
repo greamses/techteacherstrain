@@ -1,9 +1,12 @@
+import renderNavigation from './js/navigation.js';
+
 window.addEventListener('scroll', function() {
+  const header = document.querySelector('header');
   const navbar = document.getElementById('navbar');
   if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
+    header.classList.add('scrolled');
   } else {
-    navbar.classList.remove('scrolled');
+    header.classList.remove('scrolled');
   }
 });
 
@@ -37,21 +40,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
-let currentTestimonial = 0;
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const carousel = document.querySelector('.testimonials-carousel');
-
-function nextTestimonial() {
-  currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-  const scrollAmount = testimonialCards[0].offsetWidth + 30; 
-  carousel.scrollTo({
-    left: scrollAmount * currentTestimonial,
-    behavior: 'smooth'
-  });
-}
-
-setInterval(nextTestimonial, 5000);
 
 function startFreeTrial() {
   // Create modal overlay
@@ -223,6 +211,7 @@ function animateCounters() {
 }
 
 const heroObserver = new IntersectionObserver((entries) => {
+  
   entries.forEach(entry => {
     if (entry.isIntersecting && !entry.target.dataset.animated) {
       animateCounters();
@@ -241,13 +230,11 @@ function initializeTestimonialCarousel() {
   const cardWidth = testimonialCards[0].offsetWidth + 30; // Width + margin
   const totalCards = testimonialCards.length;
   
-  // Set up automatic scrolling
   function autoScroll() {
     currentIndex = (currentIndex + 1) % totalCards;
     scrollToCard(currentIndex);
   }
   
-  // Scroll to specific card
   function scrollToCard(index) {
     carousel.scrollTo({
       left: index * cardWidth,
@@ -255,7 +242,6 @@ function initializeTestimonialCarousel() {
     });
   }
   
-  // Handle infinite scroll effect
   carousel.addEventListener('scroll', () => {
     const scrollPosition = carousel.scrollLeft;
     const maxScroll = cardWidth * (totalCards - 1);
@@ -272,10 +258,8 @@ function initializeTestimonialCarousel() {
     }
   });
   
-  // Start auto-scrolling
   let autoScrollInterval = setInterval(autoScroll, 5000);
   
-  // Pause auto-scroll on hover
   carousel.addEventListener('mouseenter', () => {
     clearInterval(autoScrollInterval);
   });
@@ -284,7 +268,6 @@ function initializeTestimonialCarousel() {
     autoScrollInterval = setInterval(autoScroll, 5000);
   });
   
-  // Handle window resize
   window.addEventListener('resize', () => {
     // Recalculate card width on resize
     const newCardWidth = testimonialCards[0].offsetWidth + 30;
@@ -295,54 +278,53 @@ function initializeTestimonialCarousel() {
 }
 
 function initializeProgramsCarousel() {
-    const slider = document.querySelector('.programs-slider');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    
-    if (!slider) return;
-    
-    const programs = [
-        {
-            title: "Junior Coders Bootcamp",
-            description: "Introduction to programming for ages 8-12 with Scratch and Python basics.",
-            image: "coding.jpeg",
-            color: "#4facfe"
-        },
-        {
-            title: "Math Olympiad Prep",
-            description: "Advanced problem-solving techniques for math competition enthusiasts.",
-            image: "math.jpeg",
-            color: "#f093fb"
-        },
-        {
-            title: "Robotics Workshop",
-            description: "Hands-on robotics projects with LEGO Mindstorms and Arduino.",
-            image: "robotics.jpeg",
-            color: "#43e97b"
-        },
-        {
-            title: "Creative Math Art",
-            description: "Combine math and art through geometric patterns and fractals.",
-            image: "creative.jpeg",
-            color: "#ff9a9e"
-        },
-        {
-            title: "Financial Literacy",
-            description: "Practical money management skills for teens and young adults.",
-            image: "finance.jpeg",
-            color: "#5f2c82"
-        }
-    ];
-    
-    let currentIndex = 0;
-    
-    function createSlides() {
-        slider.innerHTML = '';
-        programs.forEach((program, index) => {
-            const slide = document.createElement('div');
-            slide.className = 'program-slide';
-            slide.innerHTML = `
+  const slider = document.querySelector('.programs-slider');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  
+  if (!slider) return;
+  
+  const programs = [
+  {
+    title: "Junior Coders Bootcamp",
+    description: "Introduction to programming for ages 8-12 with Scratch and Python basics.",
+    image: "coding.jpeg",
+    color: "#4facfe"
+  },
+  {
+    title: "Math Olympiad Prep",
+    description: "Advanced problem-solving techniques for math competition enthusiasts.",
+    image: "math.jpeg",
+    color: "#f093fb"
+  },
+  {
+    title: "Robotics Workshop",
+    description: "Hands-on robotics projects with LEGO Mindstorms and Arduino.",
+    image: "robotics.jpeg",
+    color: "#43e97b"
+  },
+  {
+    title: "Creative Math Art",
+    description: "Combine math and art through geometric patterns and fractals.",
+    image: "creative.jpeg",
+    color: "#ff9a9e"
+  },
+  {
+    title: "Financial Literacy",
+    description: "Practical money management skills for teens and young adults.",
+    image: "finance.jpeg",
+    color: "#5f2c82"
+  }];
+  
+  let currentIndex = 0;
+  
+  function createSlides() {
+    slider.innerHTML = '';
+    programs.forEach((program, index) => {
+      const slide = document.createElement('div');
+      slide.className = 'program-slide';
+      slide.innerHTML = `
                 <div class="program-slide-image" style="background-image: url('${program.image}');">
                     <div class="image-overlay" style="background: linear-gradient(135deg, ${program.color}80 0%, ${darkenColor(program.color, 20)}80 100%);"></div>
                 </div>
@@ -352,78 +334,94 @@ function initializeProgramsCarousel() {
                     <a href="#programs" class="btn-secondary">Learn More</a>
                 </div>
             `;
-            slider.appendChild(slide);
-        });
-    }
-    
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        programs.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-            });
-            dotsContainer.appendChild(dot);
-        });
-    }
-    
-    function darkenColor(color, percent) {
-        // This is a simplified color darkening function
-        return color.replace(/\d+/g, num => Math.max(0, parseInt(num) - percent));
-    }
-    
-    function goToSlide(index) {
-        currentIndex = index;
-        const slideWidth = document.querySelector('.program-slide').offsetWidth + 30;
-        slider.scrollTo({
-            left: index * slideWidth,
-            behavior: 'smooth'
-        });
-        updateDots();
-    }
-    
-    function updateDots() {
-        const dots = document.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % programs.length;
-        goToSlide(currentIndex);
-    }
+      slider.appendChild(slide);
+    });
+  }
   
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + programs.length) % programs.length;
-        goToSlide(currentIndex);
-    }
-    
-    createSlides();
-    createDots();
-    
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-    
-    // Auto-advance
-    let autoSlideInterval = setInterval(nextSlide, 5000);
-    
-    // Pause on hover
-    slider.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    programs.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+      dotsContainer.appendChild(dot);
     });
-    
-    slider.addEventListener('mouseleave', () => {
-        autoSlideInterval = setInterval(nextSlide, 5000);
+  }
+  
+  function darkenColor(color, percent) {
+    // This is a simplified color darkening function
+    return color.replace(/\d+/g, num => Math.max(0, parseInt(num) - percent));
+  }
+  
+  function goToSlide(index) {
+    currentIndex = index;
+    const slideWidth = document.querySelector('.program-slide').offsetWidth + 30;
+    slider.scrollTo({
+      left: index * slideWidth,
+      behavior: 'smooth'
     });
-    
-    window.addEventListener('resize', () => {
-        goToSlide(currentIndex);
+    updateDots();
+  }
+  
+  function updateDots() {
+    const dots = document.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
     });
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % programs.length;
+    goToSlide(currentIndex);
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + programs.length) % programs.length;
+    goToSlide(currentIndex);
+  }
+  
+  createSlides();
+  createDots();
+  
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  
+  // Auto-advance
+  let autoSlideInterval = setInterval(nextSlide, 5000);
+  
+  // Pause on hover
+  slider.addEventListener('mouseenter', () => {
+    clearInterval(autoSlideInterval);
+  });
+  
+  slider.addEventListener('mouseleave', () => {
+    autoSlideInterval = setInterval(nextSlide, 5000);
+  });
+  
+  window.addEventListener('resize', () => {
+    goToSlide(currentIndex);
+  });
 }
 
+const setupMobileMenu = () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      
+    });
+  }
+
+};
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    initializeProgramsCarousel();
-    // Your other initialization code...
+  initializeTestimonialCarousel()
+  initializeProgramsCarousel();
+  setupMobileMenu();
 });

@@ -131,7 +131,7 @@ const appData = {
       period: "/month",
       icon: "fa-robot",
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      link: ".forms/child/child.html"
+      link: "./forms/child/child.html"
     },
     {
       title: "Mental Math Mastery",

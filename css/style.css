@@ -318,24 +318,6 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.total-price {
-  background: var(--gradient-primary);
-  color: white;
-  padding: 25px;
-  border-radius: 14px;
-  text-align: center;
-  margin: 30px 0;
-  font-size: 1.4em;
-  font-weight: 700;
-  box-shadow: var(--shadow-medium);
-  transition: all 0.3s ease;
-}
-
-.total-price:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-heavy);
-}
-
 .selected-courses {
   background: rgba(108, 92, 231, 0.05);
   padding: 20px;
